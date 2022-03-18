@@ -11,7 +11,13 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
     <div id="app">
-        {{msg}}
+       <p> {{msg}} </p>
+       <p> {{verdade}} </p>
+       <p> {{mentira}} </p>
+       <p> {{letras[0] + ', '+ letras[1] + ', '+letras[2]}} </p>
+       <p>Aluno: {{aluno.nome}} </p>
+       <p> {{1+num1}} </p>
+       <p> {{fun()}} </p>
     </div>
 
     <script>
@@ -20,7 +26,15 @@
         el: '#app',
         data: {
           
-                msg: 'Teste de mensagem'
+                msg: 'Teste de mensagem',
+                verdade : true,
+                mentira : false,
+                letras : ['a','b','c'],
+                aluno : { nome: "Michel"},
+                num1 : 1,
+                fun: () => {
+                    return 'Mensagem da função'
+                }
          
         }
         
