@@ -1,74 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
-    <div id="app">
-      <input type="text" v-model="textoDigitado"
-      v-on:keyup.enter="alterarNome('Michel')" />
-      
-      <ul>
-        <li v-for="item in array"
-        style="background: white"
-        @click="alerta($event)">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
 
-          {{item}}
-        </li>
-      </ul>
-      red
-      <input @click="corP($event.target.value)"  type="radio" name="cor" value="red" checked>
-      green
-      <input @click="corP($event.target.value)"  type="radio" name="cor" value="green">
-      blue
-      <input @click="corP($event.target.value)"  type="radio" name="cor" value="blue">
-      yellow
-      <input @click="corP($event.target.value)"  type="radio" name="cor" value="yellow">
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <div id="app">
+    <input type="text" v-model="textoDigitado" v-on:keyup.enter="alterarNome('Michel')" />
+
+    <ul>
+      <li v-for="item in array" style="background: white" @click="alerta($event)">
+
+        {{item}}
+      </li>
+    </ul>
+    red
+    <input @click="corP($event.target.value)" type="radio" name="cor" value="red" checked>
+    green
+    <input @click="corP($event.target.value)" type="radio" name="cor" value="green">
+    blue
+    <input @click="corP($event.target.value)" type="radio" name="cor" value="blue">
+    yellow
+    <input @click="corP($event.target.value)" type="radio" name="cor" value="yellow">
+    <br><br>
+    <button @click="vermelho()">vermelho</button>
+    <button @click="verde">verde</button>
+    <button @click="azul()">azul</button>
+    <button @click="amarelo()">amarelo</button>
+    <button @click="branco()">branco</button>
+
+    <p v-bind:class="{red: colors.vermelho, green: colors.verde, blue: colors.azul, yellow: colors.amarelo, branco: colors.branco}">Lorem ipsum
+      dolor sit amet consectetur adipisicing elit. Tempora, quod ipsum impedit sapiente aliquid aliquam saepe maiores
+      obcaecati suscipit consequatur placeat at veniam perferendis consequuntur? Quos ullam vero deleniti pariatur!</p>
+  </div>
 
 
-      <p v-bind:class="classParagrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, quod ipsum impedit sapiente aliquid aliquam saepe maiores obcaecati suscipit consequatur placeat at veniam perferendis consequuntur? Quos ullam vero deleniti pariatur!</p>
-    </div>
+  <style>
+    .red {
+      background-color: red
+    }
 
-    
-    <style>
-      .red {background-color: red}
-    .green {background-color: green}
-    .blue {background-color: blue}
-    .yellow {background-color: yellow}
-    </style>
-    <script>
-      new Vue({
-        el: "#app",
-        data: {
-          classParagrafo: "red",
-          textoDigitado: "",
-          array: []
+    .green {
+      background-color: green
+    }
+
+    .blue {
+      background-color: blue
+    }
+
+    .yellow {
+      background-color: yellow
+    }
+    .branco {
+      background-color: white
+    }
+  </style>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        colors: { vermelho: true, verde: false, azul: false, amarelo: false, branco: false},
+        classParagrafo: "red",
+        textoDigitado: "",
+        array: []
       },
       methods: {
-        alterarNome(nome){
+        alterarNome(nome) {
           this.array.push(this.textoDigitado);
           this.textoDigitado = nome;
         },
-        alerta(event){
+        alerta(event) {
           element = event.target;
           if (element.style.background == 'white') {
             event.target.style = "background: red";
-          }else{
+          } else {
             event.target.style = "background: white";
           }
-         
+
         },
-        corP(cor){
+        corP(cor) {
           this.classParagrafo = cor;
+        },
+        vermelho() {
+          this.colors.vermelho = true;
+          this.colors.verde = false;
+          this.colors.azul = false;
+          this.colors.amarelo = false;
+          this.colors.branco = false;
+        },
+        verde() {
+          this.colors.vermelho = false;
+          this.colors.verde = true;
+          this.colors.azul = false;
+          this.colors.amarelo = false;
+          this.colors.branco = false;
+        },
+        azul() {
+          this.colors.vermelho = false;
+          this.colors.verde = false;
+          this.colors.azul = true;
+          this.colors.amarelo = false;
+          this.colors.branco = false;
+        },
+        amarelo() {
+          this.colors.vermelho = false;
+          this.colors.verde = false;
+          this.colors.azul = false;
+          this.colors.amarelo = true;
+          this.colors.branco = false;
+        },
+        branco() {
+          this.colors.vermelho = false;
+          this.colors.verde = false;
+          this.colors.azul = false;
+          this.colors.amarelo = false;
+          this.colors.branco = true;
+
         }
       },
 
-      });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
