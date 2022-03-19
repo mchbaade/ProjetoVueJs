@@ -10,37 +10,29 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
     <div id="app">
+      <input type="text" v-model="textoDigitado">
       
-      <div v-for="img in imagens">
-        <img :src="img" width="300px"/>
-      </div>
-      
-      <p v-for="(fruta, index) in frutas">
+        {{textoDigitado}}
 
-        {{index}} - {{fruta.nome}} / {{fruta.cor}}
-
-      </p>
-
-
-      <ul>
-          <li v-for="(value, key, index) in usuario">
-              <b>{{key}} </b> : {{value}}
-          </li>
-      </ul>
-
+        <br>
+        <button v-on:click="alterarNome()">
+            Chamar altera nome
+        </button>
+        <br>
+        <label v-text="textoDigitado"> </label>
     </div>
     <script>
       new Vue({
         el: "#app",
         data: {
           textoDigitado: "",
-          imagens: ["vuejs.jpeg","vuejs2.jpg","vuejs3.jpeg"],
-          usuario: {nome: "Michel", sobrenome : "Baade", telefone: "47996015808", email: "mibaade.mb@gmail.com"},
-          frutas: [{nome: "Pera", cor: "Verde"},{nome: "Uva", cor: "Roxa"},{nome: "Maça", cor: "Vermelha"}],
-          titleImg: "Logo Vue",
-          url: "http://br.vuejs.org/",
-          textoParagrafo: "<b>teste</b> <br> comum"
+        },
+        methods: {
+            alterarNome(){
+                this.textoDigitado = "Michel";
+            }
         }
+
       });
     </script>
   </body>
