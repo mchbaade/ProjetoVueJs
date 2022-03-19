@@ -37,49 +37,16 @@
     <button @click="borda()">borda</button>
     <button @click="semborda()">sem borda</button>
 
-    <p v-bind:class="{red: colors.vermelho, green: colors.verde, blue: colors.azul, yellow: colors.amarelo, branco: colors.branco, borda : colors.borda,semborda: colors.semborda}">Lorem ipsum
+    <p ref="firstParagraph">Lorem ipsum
       dolor sit amet consectetur adipisicing elit. Tempora, quod ipsum impedit sapiente aliquid aliquam saepe maiores
       obcaecati suscipit consequatur placeat at veniam perferendis consequuntur? Quos ullam vero deleniti pariatur!</p>
   
-      <p class="red, green">
-      teste
-      </p>
     </div>
 
-
-  <style>
-    .red {
-      background-color: red;
-    }
-
-    .green {
-      background-color: green;
-    }
-
-    .blue {
-      background-color: blue;
-    }
-
-    .yellow {
-      background-color: yellow;
-    }
-    .branco {
-      background-color: white;
-    }
-    
-    .borda {
-      border: 1px solid black;
-    }
-
-    .semborda {
-      border: none;
-    }
-  </style>
   <script>
     new Vue({
       el: "#app",
       data: {
-        colors: { vermelho: false, verde: false, azul: false, amarelo: false, branco: false, borda : false, semborda : true},
         classParagrafo: "red",
         textoDigitado: "",
         array: []
@@ -102,47 +69,25 @@
           this.classParagrafo = cor;
         },
         vermelho() {
-          this.colors.vermelho = true;
-          this.colors.verde = false;
-          this.colors.azul = false;
-          this.colors.amarelo = false;
-          this.colors.branco = false;
+          this.$refs.firstParagraph.style.background = "red";
         },
         verde() {
-          this.colors.vermelho = false;
-          this.colors.verde = true;
-          this.colors.azul = false;
-          this.colors.amarelo = false;
-          this.colors.branco = false;
+          this.$refs.firstParagraph.style.background = "green";
         },
         azul() {
-          this.colors.vermelho = false;
-          this.colors.verde = false;
-          this.colors.azul = true;
-          this.colors.amarelo = false;
-          this.colors.branco = false;
+          this.$refs.firstParagraph.style.background = "blue";
         },
         amarelo() {
-          this.colors.vermelho = false;
-          this.colors.verde = false;
-          this.colors.azul = false;
-          this.colors.amarelo = true;
-          this.colors.branco = false;
+          this.$refs.firstParagraph.style.background = "yellow";
         },
         branco() {
-          this.colors.vermelho = false;
-          this.colors.verde = false;
-          this.colors.azul = false;
-          this.colors.amarelo = false;
-          this.colors.branco = true;
+          this.$refs.firstParagraph.style.background = "white";
         },
         borda() {
-          this.colors.borda = true;
-          this.colors.semborda = false;
+          this.$refs.firstParagraph.style.border = "1px solid black";
         },
         semborda() {
-          this.colors.borda = false;
-          this.colors.semborda = true;
+          this.$refs.firstParagraph.style.border = "none";
         }
       },
 
