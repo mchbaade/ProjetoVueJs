@@ -21,12 +21,31 @@
           {{item}}
         </li>
       </ul>
+      red
+      <input @click="corP($event.target.value)"  type="radio" name="cor" value="red" checked>
+      green
+      <input @click="corP($event.target.value)"  type="radio" name="cor" value="green">
+      blue
+      <input @click="corP($event.target.value)"  type="radio" name="cor" value="blue">
+      yellow
+      <input @click="corP($event.target.value)"  type="radio" name="cor" value="yellow">
 
+
+      <p v-bind:class="classParagrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, quod ipsum impedit sapiente aliquid aliquam saepe maiores obcaecati suscipit consequatur placeat at veniam perferendis consequuntur? Quos ullam vero deleniti pariatur!</p>
     </div>
+
+    
+    <style>
+      .red {background-color: red}
+    .green {background-color: green}
+    .blue {background-color: blue}
+    .yellow {background-color: yellow}
+    </style>
     <script>
       new Vue({
         el: "#app",
         data: {
+          classParagrafo: "red",
           textoDigitado: "",
           array: []
       },
@@ -43,6 +62,9 @@
             event.target.style = "background: white";
           }
          
+        },
+        corP(cor){
+          this.classParagrafo = cor;
         }
       },
 
