@@ -14,7 +14,10 @@
       v-on:keyup.enter="alterarNome('Michel')" />
       
       <ul>
-        <li v-for="item in array">
+        <li v-for="item in array"
+        style="background: white"
+        @click="alerta($event)">
+
           {{item}}
         </li>
       </ul>
@@ -31,6 +34,15 @@
         alterarNome(nome){
           this.array.push(this.textoDigitado);
           this.textoDigitado = nome;
+        },
+        alerta(event){
+          element = event.target;
+          if (element.style.background == 'white') {
+            event.target.style = "background: red";
+          }else{
+            event.target.style = "background: white";
+          }
+         
         }
       },
 
