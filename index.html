@@ -5,46 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
-
-        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
-        
-    <div id="app">
+    <button onclick="carregar()">
+        CHAMAR MUDANÇA
+    </button>
+    <div class="app">
        {{nome}}
-       <button @click="imprimir()">
-            CHAMAR MUDANÇA
-        </button>
     </div>
-    <div id="app1">
-        {{nome}}
-     </div>
 
     <script>
-
-        let mensagem = "Minha aplicação";
-
-        
+        function carregar(){
+            app.$mount('.app');
+        }
     const app = new Vue({ 
-        el: '#app',
+       
         data: {
-            nome:`${mensagem} 0`
+            nome:`Olá mundo!`
         },
-        methods:{
-            imprimir(){
-            app.nome = "Outra informação";
-            app1.nome = "Outra informação";
-        }
-
-        }
-    })
-    const app1 = new Vue({ 
-        el: '#app1',
-        data: {
-            nome:`${mensagem} 1`
-        }
-    })
+        template: "<h1>{{nome}}</h1>"
+    });
+   
     </script>
 
 </body>
