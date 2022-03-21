@@ -8,25 +8,44 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
-    <button onclick="carregar()">
-        CHAMAR MUDANÇA
-    </button>
-    <div class="app">
-       {{nome}}
+    
+    <div id="app">
+            <painel></painel>
+            <painel></painel>
+    </div>
+    <div id="app1">
+            <painel></painel>
+            <painel></painel>
     </div>
 
     <script>
-        function carregar(){
-            app.$mount('.app');
-        }
-    const app = new Vue({ 
-       
-        data: {
-            nome:`Olá mundo!`
+   Vue.component('painel', {
+        data() {
+            return {
+                titulo: "Painel de Notícias"
+            }
+
+        }, 
+        methods: {
+            alerta() {
+                this.titulo = "Alerta";
+            }
         },
-        template: "<h1>{{nome}}</h1>"
+        template: `
+        <div>
+           <h1>{{titulo}}</h1>
+           <button @click="alerta()" > Alerta</button >
+        </div>
+        `
+    });
+       
+    const app = new Vue({ 
+       el: "#app"
     });
    
+    const app1 = new Vue({ 
+       el: "#app1"
+    });
     </script>
 
 </body>
