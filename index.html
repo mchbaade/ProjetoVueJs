@@ -13,10 +13,7 @@
             <painel></painel>
             <painel></painel>
     </div>
-    <div id="app1">
-            <painel></painel>
-            <painel></painel>
-    </div>
+    
 
     <script>
    Vue.component('painel', {
@@ -40,12 +37,48 @@
     });
        
     const app = new Vue({ 
-       el: "#app"
-    });
+        data:{
+            nome: 1
+        },
+       methods:{
+            atualiza(){
+            this.nome += 1
+            },
+            destruir(){
+                this.$destroy();
+            }
+       },
+       template: "<div><painel></painel>{{nome}}<button @click='atualiza()'>Atualiza</button><br><button @click='destruir()'>Destruir</button></div>",
+           beforeCreate(){
+               console.log("Antes de criar tudo");
+           },
+           created(){
+               console.log("Quando já foi criado tudo");
+           },
+           beforeMount() {
+               console.log("Antes de montar tudo");
+           },
+           mounted() {
+            console.log("Tudo montado");
+           },
+           beforeUpdate() {
+            console.log("O valor atual é: "+this.nome);
+           },
+           updated() {
+            console.log("O valor depois de atualizar é: "+this.nome);
+           },
+           beforeDestroy() {
+            console.log("Antes de DESTRUIR");
+           },
+           destroyed() {
+            console.log("DESTRUIDO");
+           },
+           
+           
+            
+       
+    }).$mount('#app');
    
-    const app1 = new Vue({ 
-       el: "#app1"
-    });
     </script>
 
 </body>
