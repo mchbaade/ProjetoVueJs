@@ -10,38 +10,40 @@
 
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
+        
     <div id="app">
-       <p> {{msg}} </p>
-       <p> {{verdade}} </p>
-       <p> {{mentira}} </p>
-       <p> {{letras[0] + ', '+ letras[1] + ', '+letras[2]}} </p>
-       <p>Aluno: {{aluno.nome}} </p>
-       <p> {{1+num1}} </p>
-       <p> {{metodo(num1)}} </p>
+       {{nome}}
+       <button @click="imprimir()">
+            CHAMAR MUDANÇA
+        </button>
     </div>
+    <div id="app1">
+        {{nome}}
+     </div>
 
     <script>
-    new Vue({
+
+        let mensagem = "Minha aplicação";
+
         
+    const app = new Vue({ 
         el: '#app',
         data: {
-          
-                msg: 'Teste de mensagem',
-                verdade : true,
-                mentira : false,
-                letras : ['a','b','c'],
-                aluno : { nome: "Michel"},
-                num1 : 1
-         
+            nome:`${mensagem} 0`
         },
-        methods: {
-            
-                metodo(indice) {
-                    return 'Fruta:'+this.letras[indice]
-                }
-        },
-        
+        methods:{
+            imprimir(){
+            app.nome = "Outra informação";
+            app1.nome = "Outra informação";
+        }
 
+        }
+    })
+    const app1 = new Vue({ 
+        el: '#app1',
+        data: {
+            nome:`${mensagem} 1`
+        }
     })
     </script>
 
